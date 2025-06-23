@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Your Study Plan{% endblock %}
+{% block content %}
+<h2>Your Daily Study Plan</h2>
+<a href="/download-pdf" class="btn btn-primary mb-3">Download as PDF</a>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr><th>Day</th><th>Plan</th></tr>
+  </thead>
+  <tbody>
+    {% for day, items in study_plan.items() %}
+    <tr>
+      <td>{{ day }}</td>
+      <td>
+        <ul class="mb-0">
+          {% for item in items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

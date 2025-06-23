@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>Generate Your Study Plan</h2>
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+<form method="POST" action="/generate-plan">
+  <div class="mb-3">
+    <label for="exam_date" class="form-label">Exam Date</label>
+    <input type="date" class="form-control" name="exam_date" id="exam_date" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="subjects" class="form-label">Subjects or Topics (comma-separated)</label>
+    <textarea class="form-control" name="subjects" id="subjects" rows="3" required></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="hours_per_day" class="form-label">Hours per Day</label>
+    <input type="number" class="form-control" name="hours_per_day" id="hours_per_day" min="1" max="12" value="4" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="intensity" class="form-label">Study Intensity</label>
+    <select class="form-select" name="intensity" id="intensity" required>
+      <option value="">Select</option>
+      <option value="Light">Light</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Intense">Intense</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success">Generate Plan</button>
+</form>
+{% endblock %}
